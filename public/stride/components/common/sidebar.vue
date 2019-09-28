@@ -35,13 +35,12 @@
           <small class="az-iconbar-text">A collection basic to advanced table design that you can use to your data.</small>
           <nav class="nav">
             <a href="table-basic.html" class="nav-link">Configuration</a>
-            <a href="table-data.html" class="nav-link">API connections</a>
+            <a href="#" class="nav-link">API connections</a>
             <br>
             <small class="az-iconbar-text">User Management.</small>
-            <a href="table-data.html" class="nav-link">Users</a>
-            <a href="table-data.html" class="nav-link">User Groups</a>
-            <a href="table-data.html" class="nav-link">Roles</a>
-
+            <router-link to = "/users" tag = "a" class="nav-link">Users</router-link>
+            <router-link to = "/user-groups" tag = "a" class="nav-link">User Groups</router-link>
+            <router-link to = "/roles" tag = "a" class="nav-link">Roles</router-link>
           </nav>
         </div><!-- az-iconbar-pane -->
       </div><!-- az-iconbar-body -->
@@ -57,7 +56,4 @@ export default {
     }
   }
 }
-
-// 9616524196 
-// 9005603027 manoj
 </script>

@@ -2,8 +2,8 @@
     <div class="az-content az-content-dashboard-six">
       <header-menu></header-menu>
       <div class="az-content-body az-content-body-dashboard-six">
-        <h2 class="az-content-title tx-24 mg-b-5">Hi, welcome back!</h2>
-        <p class="mg-b-20">Your finance performance and monitoring dashboard template.</p>
+        <!-- <h2 class="az-content-title tx-24 mg-b-5">Hi, welcome back!</h2>
+        <p class="mg-b-20">Your finance performance and monitoring dashboard template.</p> -->
 
         <div class="row row-sm">
           <div class="col-sm-6 col-lg-3">
@@ -224,10 +224,3 @@
       </div><!-- az-content-body -->
     </div><!-- az-content -->
 </template>
-
-<script>
-    import headerMenu from "../common/header.vue";
-    export default {
-      components: { headerMenu }
-    }
-</script>
