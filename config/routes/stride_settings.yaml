@@ -1,0 +1,2 @@
+stride_settings:
+  resource: "@SettingsBundle/Resources/config/routes.yaml"

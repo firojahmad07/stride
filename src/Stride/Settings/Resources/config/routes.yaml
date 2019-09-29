@@ -1,0 +1,4 @@
+user_configurations:
+  path: /settings
+  controller: Stride\Settings\Controller\RestController::index
+  # controller: "@"

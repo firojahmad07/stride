@@ -14,9 +14,8 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
         mappings:
-            App:
-                is_bundle: false
-                type: annotation
-                dir: '%kernel.project_dir%/src/Entity'
-                prefix: 'App\Entity'
-                alias: App
+            Settings:
+                is_bundle: true
+                type: yaml
+                dir: '%kernel.project_dir%/src/Stride/Settings'
+                alias: Settings
