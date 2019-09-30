@@ -1,6 +1,6 @@
 <?php
 
-namespace Stride\Settings\Controller;
+namespace Stride\System\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 

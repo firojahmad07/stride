@@ -16,5 +16,5 @@ return [
     Symfony\Bundle\WebServerBundle\WebServerBundle::class => ['dev' => true],
 
     // stride bundles configurations
-    Stride\Settings\SettingsBundle::class => ['all' => true]
+    Stride\System\SystemBundle::class => ['all' => true]
 ];

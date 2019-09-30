@@ -1,0 +1,2 @@
+stride_system:
+  resource: "@SystemBundle/Resources/config/routes.yaml"
