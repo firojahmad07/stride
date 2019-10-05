@@ -2,10 +2,10 @@ import router from "vue-router";
 
 // components
 import dashboard from "../components/pages/dashboard.vue";
-import users from "../components/system/users.vue"
-import userGroups from "../components/system/user-groups.vue"
-import addRole from "../components/system/add-role.vue"
-import roles from "../components/system/roles.vue"
+import users from "../components/core/users.vue"
+import userGroups from "../components/core/user-groups.vue"
+import addRole from "../components/core/add-role.vue"
+import roles from "../components/core/roles.vue"
 
 // settings routes
 var dashboardRouts = [

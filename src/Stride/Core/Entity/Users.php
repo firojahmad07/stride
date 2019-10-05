@@ -1,11 +1,13 @@
 <?php
 
-namespace Stride\System\Entity;
+namespace Stride\Core\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="Stride\System\Repository\UsersRepository")
+ * @ORM\Entity(repositoryClass="Stride\Core\Repository\UsersRepository")
  */
 class Users
 {
@@ -13,40 +15,33 @@ class Users
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @ORM\ManyToMany(targetEntity = 'Roles')
-     * @ORM\JoinTable(name = 'users_roles')
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=50)
      */
     private $firstName;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=40)
      */
     private $lastName;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=100)
      */
-    private $userName;
+    private $username;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=100)
      */
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="text")
      */
     private $password;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $token;
 
     /**
      * @ORM\Column(type="boolean")
@@ -61,7 +56,17 @@ class Users
     /**
      * @ORM\Column(type="datetime")
      */
-    private $updateAt;
+    private $updatedAt;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Stride\Core\Entity\Roles", inversedBy="users")
+     */
+    private $role_id;
+
+    public function __construct()
+    {
+        $this->role_id = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -92,14 +97,14 @@ class Users
         return $this;
     }
 
-    public function getUserName(): ?string
+    public function getUsername(): ?string
     {
-        return $this->userName;
+        return $this->username;
     }
 
-    public function setUserName(string $userName): self
+    public function setUsername(string $username): self
     {
-        $this->userName = $userName;
+        $this->username = $username;
 
         return $this;
     }
@@ -128,18 +133,6 @@ class Users
         return $this;
     }
 
-    public function getToken(): ?string
-    {
-        return $this->token;
-    }
-
-    public function setToken(string $token): self
-    {
-        $this->token = $token;
-
-        return $this;
-    }
-
     public function getStatus(): ?bool
     {
         return $this->status;
@@ -164,14 +157,40 @@ class Users
         return $this;
     }
 
-    public function getUpdateAt(): ?\DateTimeInterface
+    public function getUpdatedAt(): ?\DateTimeInterface
     {
-        return $this->updateAt;
+        return $this->updatedAt;
     }
 
-    public function setUpdateAt(\DateTimeInterface $updateAt): self
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $this->updateAt = $updateAt;
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Roles[]
+     */
+    public function getRoleId(): Collection
+    {
+        return $this->role_id;
+    }
+
+    public function addRoleId(Roles $roleId): self
+    {
+        if (!$this->role_id->contains($roleId)) {
+            $this->role_id[] = $roleId;
+        }
+
+        return $this;
+    }
+
+    public function removeRoleId(Roles $roleId): self
+    {
+        if ($this->role_id->contains($roleId)) {
+            $this->role_id->removeElement($roleId);
+        }
 
         return $this;
     }

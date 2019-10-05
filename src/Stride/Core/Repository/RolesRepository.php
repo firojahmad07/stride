@@ -1,8 +1,8 @@
 <?php
 
-namespace Stride\System\Repository\RolesRepository;
+namespace Stride\Core\Repository;
 
-use Stride\System\Repository\Entity\Roles;
+use Stride\Core\Entity\Roles;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 

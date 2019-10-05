@@ -1,10 +1,10 @@
 <?php
 
-namespace Stride\System;
+namespace Stride\Core;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class SystemBundle extends Bundle
+class CoreBundle extends Bundle
 {
 
 }

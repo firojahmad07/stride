@@ -6,8 +6,6 @@
             <router-link to = "/add-role" tag ="button" class = "btn btn-indigo btn-with-icon btn-block">
                 <i class="typcn typcn-plus-outline"></i>Add Roles      
             </router-link>
-            <!-- <button class="">
-          <i class="typcn typcn-plus-outline"></i>Add Roles</button> -->
         </div>     
          
 

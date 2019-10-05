@@ -1,0 +1,4 @@
+user_Core:
+  path: /Core
+  controller: Stride\Core\Controller\RestController::index
+  # controller: "@"

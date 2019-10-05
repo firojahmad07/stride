@@ -1,8 +1,8 @@
 <?php
 
-namespace Stride\System\Repository;
+namespace Stride\Core\Repository;
 
-use Stride\System\Entity\Users;
+use Stride\Core\Entity\Users;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
