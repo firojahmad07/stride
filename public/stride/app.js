@@ -12,6 +12,8 @@ import "./constants/globalComponents";
 import vueRouter from "vue-router";
 import vue from "vue";
 
+
+// Vue.use()
 vue.use(vueRouter);
 import routers from './routers';
 

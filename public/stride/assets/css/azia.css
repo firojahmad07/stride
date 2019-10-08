@@ -3965,7 +3965,9 @@ button.close {
   z-index: 1050;
   display: none;
   overflow: hidden;
-  outline: 0; }
+  outline: 0; 
+  background: #00000030;
+}
 
 .modal-dialog {
   position: relative;
@@ -4008,7 +4010,7 @@ button.close {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1040;
+  z-index: 0;
   background-color: #000; }
   .modal-backdrop.fade {
     opacity: 0; }
