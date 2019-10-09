@@ -1,6 +1,6 @@
 # users controller
 # user.rest_configuration.service:
-#     class: "@SettingsBundle\Controller\RestController::index"
+#     class: "@CoreBundle\Controller\RestController::index"
 #     arguments:
 #         - "@service_container"
 #         - "@doctrine.orm.entity_manager"
