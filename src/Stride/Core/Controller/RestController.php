@@ -3,6 +3,7 @@
 namespace Stride\Core\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Stride\Core\Entity\Roles;
 use Stride\Core\Entity\Users;
 
@@ -11,17 +12,20 @@ class RestController extends AbstractController
    
     public function index()
     {
+        $coreConfiguration = $this->container->get('stride.core_configuration.service');
+        dump(get_class_methods($coreConfiguration));
         $entityManager = $this->getDoctrine()->getManager();
-        $userRepo = $entityManager->getRepository('CoreBundle:Users')->findOneById(2);
-        $roleRepo = $entityManager->getRepository('CoreBundle:Roles')->findOneById(1);
-        // dump($roleRepo);
-        $userRepo->setFirstName("Andrew");
-        $userRepo->setLastName("Mathous");
-        $userRepo->addRoleId($roleRepo);
-        $entityManager->persist($userRepo);
-        $entityManager->flush();
-        dump($userRepo->getRoleId());die;
-        dump(get_class_methods($userRepo));die;
+        $userRepo = $entityManager->getRepository('CoreBundle:Users')->findAll();
+        dump($userRepo);die;
+        // $roleRepo = $entityManager->getRepository('CoreBundle:Roles')->findOneById(1);
+        // // dump($roleRepo);
+        // $userRepo->setFirstName("Andrew");
+        // $userRepo->setLastName("Mathous");
+        // $userRepo->addRoleId($roleRepo);
+        // $entityManager->persist($userRepo);
+        // $entityManager->flush();
+        // dump($userRepo->getRoleId());die;
+        // dump(get_class_methods($userRepo));die;
         // $this->createUser();
         // foreach($this->getRoles() as $role) {
         //     $newRole = new Roles;

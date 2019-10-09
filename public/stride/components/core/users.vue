@@ -18,44 +18,24 @@
             <thead>
               <tr>
                 <th>ID</th>
-                <th>Name</th>
-                <th>Position</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
+              <tr v-for="user in users" :key="user.id">
+                <th scope="row"> {{ user.id }}</th>
+                <td> {{ user.firstName }} </td>
+                <td> {{ user.lastName }} </td>
+                <td> {{ user.email }} </td>
                 <td>
-                  <i class="typcn typcn-edit"></i>
-                  <i class="typcn typcn-trash"></i>
+                  <div class="btn-icon-list">
+                    <button class="btn btn-md btn-indigo btn-icon"><i class="typcn typcn-edit"></i></button>
+                    <button class="btn btn-md btn-danger btn-icon"><i class="typcn typcn-trash"></i></button>                 
+                  </div>
                 </td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Garrett Winters</td>
-                <td>Accountant</td>
-                <td>$170,750</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Ashton Cox</td>
-                <td>Junior Technical Author</td>
-                <td>$86,000</td>
-              </tr>
-              <tr>
-                <th scope="row">4</th>
-                <td>Cedric Kelly</td>
-                <td>Senior Javascript Developer</td>
-                <td>$433,060</td>
-              </tr>
-              <tr>
-                <th scope="row">5</th>
-                <td>Airi Satou</td>
-                <td>Accountant</td>
-                <td>$162,700</td>
               </tr>
             </tbody>
           </table>
@@ -84,7 +64,7 @@
               </div>
               <div class="modal-body">
                 <form id="create-user-form" action="/create-user" method="post"
-                @submit="addUser" data-parsley-validate novalidate>
+                    @submit="addUser" data-parsley-validate novalidate>
                   <div class="wd-sm-300">
                     <div class="d-md-flex mg-b-20">
                       <div class="form-group mg-b-0">
@@ -145,7 +125,27 @@
               password: '',
               cPassword: '',
               email: ''
-          }
+          },
+          users: [
+              {   
+                  id: 1,
+                  firstName: "John",
+                  lastName: "Doe",
+                  email: 'johndoe@example.com'
+              },
+              {   
+                  id: 2,
+                  firstName: "Villiam",
+                  lastName: "Smith",
+                  email: 'villiam@example.com'
+              },
+              {   
+                  id: 3,
+                  firstName: "Mark",
+                  lastName: "Wood",
+                  email: 'mark@example.com'
+              },
+            ],
         }
       },
       created(){
@@ -153,11 +153,13 @@
       },
       
       methods: {
-        addUser:function(){
-
+        addUser:function(e){
+          e.preventDefault();
+          console.log('user data : ', this.user);
         },
          initForm: function(){
            console.log('onload');
+           console.log(this.$store.state.testMessage);
            $('#create-user-form').parsley();
          }
       }

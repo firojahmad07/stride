@@ -6,3 +6,4 @@ import '../assets/css/azia.css';
 import  'bootstrap/dist/js/bootstrap.min.js';
 import  'parsleyjs/dist/parsley.min.js';
 import  'select2/dist/js/select2.min.js';
+import 'es6-promise/auto';

@@ -10,8 +10,8 @@ import "./constants/globalComponents";
  * vue components
  */
 import vueRouter from "vue-router";
+import store from "./store";
 import vue from "vue";
-
 
 // Vue.use()
 vue.use(vueRouter);
@@ -21,6 +21,7 @@ import app from "./components/app.vue";
 // import login from "./components/secure/login.vue"
 new vue({
     el: "#vue_app",
+    store,
     router: routers,
     render: h => h(app) 
 });

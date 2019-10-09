@@ -1,0 +1,7 @@
+services:
+    stride.core_configuration.service:
+        public: true    
+        class: 'Stride\Core\Services\CoreConfiguration'
+        arguments: 
+            - '@doctrine.orm.entity_manager'
+            - '@service_container'
