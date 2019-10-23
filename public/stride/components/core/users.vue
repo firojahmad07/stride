@@ -25,7 +25,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="user in users" :key="user.id">
+              <!-- <tr v-for="user in users" :key="user.id">
                 <th scope="row"> {{ user.id }}</th>
                 <td> {{ user.firstName }} </td>
                 <td> {{ user.lastName }} </td>
@@ -36,7 +36,7 @@
                     <button class="btn btn-md btn-danger btn-icon"><i class="typcn typcn-trash"></i></button>                 
                   </div>
                 </td>
-              </tr>
+              </tr> -->
             </tbody>
           </table>
         </div><!-- table-responsive -->
@@ -53,7 +53,7 @@
       </div><!-- az-content-body -->
 
        <!-- LARGE MODAL -->  <!-- LARGE MODAL -->
-        <div id="modaldemo3" class="modal">
+      <div id="modaldemo3" class="modal">
           <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content modal-content-demo">
               <div class="modal-header">
@@ -63,7 +63,7 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form id="create-user-form" action="/create-user" method="post"
+                <!-- <form id="create-user-form" action="/create-user" method="post"
                     @submit="addUser" data-parsley-validate novalidate>
                   <div class="wd-sm-300">
                     <div class="d-md-flex mg-b-20">
@@ -71,39 +71,39 @@
                         <label class="form-label">Firstname: <span class="tx-danger">*</span></label>
                         <input type="text" name="firstname" v-model="user.firstName" class="form-control wd-350"
                           data-parsley-maxlength="40" placeholder="Enter firstname" required>
-                      </div><!-- form-group -->
+                      </div>
                       <div class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0">
                         <label class="form-label">Lastname: <span class="tx-danger">*</span></label>
                         <input type="text" name="lastname" v-model="user.lastName" class="form-control wd-350"
                           data-parsley-maxlength="40" placeholder="Enter lastname" required>
-                      </div><!-- form-group -->
-                    </div><!-- d-flex -->
+                      </div>
+                    </div>
 
                     <div class="d-md-flex mg-b-20">
                         <div class="form-group mg-b-0">
                           <label class="form-label">User Name: <span class="tx-danger">*</span></label>
                           <input type="text" name="firstname" v-model="user.userName" class="form-control wd-350" placeholder="Enter User Name" required>
-                        </div><!-- form-group -->
+                        </div>
                         <div class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0">
                           <label class="form-label">Email: <span class="tx-danger">*</span></label>
                           <input type="text" name="lastname" v-model="user.email" class="form-control wd-350" placeholder="Enter Email" required>
-                        </div><!-- form-group -->
-                    </div><!-- d-flex -->
+                        </div>
+                    </div>
 
                      <div class="d-md-flex mg-b-20">
                         <div class="form-group mg-b-0">
                           <label class="form-label">Password: <span class="tx-danger">*</span></label>
                           <input type="Password" name="firstname" v-model="user.password" class="form-control wd-350" placeholder="Enter Password" required>
-                        </div><!-- form-group -->
+                        </div>
                         <div class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0">
                           <label class="form-label">Confirm Password: <span class="tx-danger">*</span></label>
                           <input type="password" name="lastname" v-model="user.cPassword" class="form-control wd-350" placeholder="Enter Password Again" required>
-                        </div><!-- form-group -->
-                      </div><!-- d-flex -->
+                        </div>
+                      </div>
 
 
                   </div>
-                </form>
+                </form> -->
               </div><!-- modal-body -->
               <div class="modal-footer">
                 <button type="button" class="btn btn-indigo">Save changes</button>
@@ -115,55 +115,35 @@
 </template>
 
 <script>
-    export default {
-      data() { 
-        return {
-          user: {
-              userName: '',
-              firstName: '',
-              lastName: '',
-              password: '',
-              cPassword: '',
-              email: ''
-          },
-          users: [
-              {   
-                  id: 1,
-                  firstName: "John",
-                  lastName: "Doe",
-                  email: 'johndoe@example.com'
-              },
-              {   
-                  id: 2,
-                  firstName: "Villiam",
-                  lastName: "Smith",
-                  email: 'villiam@example.com'
-              },
-              {   
-                  id: 3,
-                  firstName: "Mark",
-                  lastName: "Wood",
-                  email: 'mark@example.com'
-              },
-            ],
+  import { mapState, mapActions, mapMutations, mapGetters } from 'vuex';
+
+  export default {
+    mounted: {
+      ...mapMutations('userModule', ['getUsers']),
+      // console.log('users vue mounted');      
+    },
+    computed: {
+      ...mapState("userModule", { loadUsers: "users"}),
+    },
+    created(){
+      this.initForm();
+    },
+    
+    methods: {
+      loadUsers (users) {
+        console.log('user data: ', users);
+      },
+      addUser:function(e){
+        e.preventDefault();
+        console.log('user data : ', this.user);
+      },
+        initForm: function(){
+          console.log('onload');
+          console.log(this.$store.state.testMessage);
+          $('#create-user-form').parsley();
         }
-      },
-      created(){
-        this.initForm();
-      },
-      
-      methods: {
-        addUser:function(e){
-          e.preventDefault();
-          console.log('user data : ', this.user);
-        },
-         initForm: function(){
-           console.log('onload');
-           console.log(this.$store.state.testMessage);
-           $('#create-user-form').parsley();
-         }
-      }
     }
+  }
 </script>
 <style>
   .add-users {

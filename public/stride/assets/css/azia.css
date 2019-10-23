@@ -12591,7 +12591,7 @@ textarea.parsley-success:focus {
   justify-content: flex-end; }
   @media (min-width: 992px) {
     .az-mail-options {
-      padding-left: 25px;
+      padding: 15px 25px 15px;
       display: flex;
       justify-content: space-between; } }
   .az-mail-options .btn, .az-mail-options .sp-container button, .sp-container .az-mail-options button {
@@ -12620,9 +12620,6 @@ textarea.parsley-success:focus {
 
 .az-mail-item {
   padding: 10px 15px;
-  border-top: 1px solid #e9ecef;
-  border-bottom: 1px solid #e9ecef;
-  background-color: #fcfcfc;
   position: relative;
   display: flex;
   align-items: center;

@@ -28,7 +28,93 @@
                         </form>
                     </div><!-- general-->
                     <div class="permissions-body" v-show="permissions">
-                        <h1>permissions</h1>
+                          <div class="az-content az-content-mail">
+                                <div class="container">
+                                    <div class="az-content-left az-content-left-mail">
+
+                                        <div class="az-content-header">
+                                            <a href="" id="azNavbarShow" class="az-header-menu-icon"><span></span></a>
+                                            <a href="index.html" class="az-logo">az<span>i</span>a</a>
+                                            <a href="" id="azContentLeftHide" class="az-header-arrow">
+                                            <i class="icon ion-md-arrow-forward d-sm-none"></i>
+                                            <i class="icon ion-md-close d-none d-sm-block"></i>
+                                            </a>
+                                        </div><!-- az-content-header -->
+                                        <div class="row row-sm">
+                                            <div class="col-md-4 col-lg-3">
+                                                <div class="pd-20 bg-gray-200">
+                                                    <nav class="nav az-nav-column">
+                                                    <a class="nav-link active" data-toggle="tab" href="#">Home</a>
+                                                    <a class="nav-link" data-toggle="tab" href="#">About</a>
+                                                    <a class="nav-link" data-toggle="tab" href="#">Features</a>
+                                                    <a class="nav-link" data-toggle="tab" href="#">Services</a>
+                                                    <a class="nav-link" data-toggle="tab" href="#">Blog</a>
+                                                    <a class="nav-link" data-toggle="tab" href="#">Contact</a>
+                                                    </nav>
+                                                </div><!-- pd-10 -->
+                                            </div><!-- col-3 -->
+                                        </div><!-- row -->
+                                    </div><!-- az-content-left -->
+                                    <div class="az-content-body az-content-body-mail tab-content">
+                                       <div id="tabCont1" class="tab-pane active show">
+                                            <div class="az-mail-header">
+                                            <div>
+                                                <h4 class="az-content-title mg-b-5">Inbox</h4>                                        
+                                            </div>
+                                            </div><!-- az-mail-list-header -->
+                                            <div class="az-mail-options">
+                                                <label class="ckbox">
+                                                    <input id="checkAll" type="checkbox">
+                                                    <span></span>
+                                                    <span> All</span>
+                                                </label>
+                                            </div><!-- az-mail-options -->
+
+                                            <div class="az-mail-list">
+                                                <div class="az-mail-item">
+                                                    <div class="az-mail-checkbox">
+                                                        <label class="ckbox">
+                                                        <input type="checkbox">
+                                                        <span></span>
+                                                        <span>Create Product</span>
+                                                        </label>
+                                                    </div><!-- az-mail-checkbox -->
+                                                </div><!-- az-mail-item -->
+
+                                            </div><!-- az-mail-list -->
+                                       </div>
+
+                                        <div id="tabCont2" class="tab-pane">
+                                            <div class="az-mail-header">
+                                            <div>
+                                                <h4 class="az-content-title mg-b-5">Inbox ee</h4>                                        
+                                            </div>
+                                            </div><!-- az-mail-list-header -->
+                                            <div class="az-mail-options">
+                                                <label class="ckbox">
+                                                    <input id="checkAll" type="checkbox">
+                                                    <span></span>
+                                                    <span> All</span>
+                                                </label>
+                                            </div><!-- az-mail-options -->
+
+                                            <div class="az-mail-list">
+                                                <div class="az-mail-item">
+                                                    <div class="az-mail-checkbox">
+                                                        <label class="ckbox">
+                                                        <input type="checkbox">
+                                                        <span></span>
+                                                        <span>Create Product</span>
+                                                        </label>
+                                                    </div><!-- az-mail-checkbox -->
+                                                </div><!-- az-mail-item -->
+
+                                            </div><!-- az-mail-list -->
+                                       </div>
+
+                                    </div><!-- az-content-body -->
+                                </div><!-- container -->
+                                </div><!-- az-content -->
                     </div><!-- general-->
                     <div class="users-body" v-show="users">
                         <div class="table-responsive">
