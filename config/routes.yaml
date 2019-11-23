@@ -1,7 +1,10 @@
-index:
-   path: /
-   controller: App\Controller\DefaultController::index
 
-index_login:
-   path: /login
-   controller: App\Controller\DefaultController::userLogin
+app_routes:
+   resource: '../../src/Resources/config/routing.yml'
+# index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+# _login:
+#    path: /user/login
+#    controller: App\Controller\DefaultController::userLogin

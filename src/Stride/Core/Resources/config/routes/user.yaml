@@ -1,4 +1,0 @@
-stride_core_get_user:
-    path: /get-user
-    controller: Stride\Core\Controller\UserController::getUser
-    methods: ["GET"]

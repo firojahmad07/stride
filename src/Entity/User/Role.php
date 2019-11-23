@@ -1,15 +1,15 @@
 <?php
 
-namespace Stride\Core\Entity;
+namespace App\Entity\User;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="Stride\Core\Repository\RolesRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\RoleRepository")
  */
-class Roles
+class Role
 {
     /**
      * @ORM\Id()
@@ -22,6 +22,11 @@ class Roles
      * @ORM\Column(type="string", length=100)
      */
     private $code;
+
+    /**
+     * @ORM\Column(type="string", length=60)
+     */
+    private $name;
 
     /**
      * @ORM\Column(type="json")
@@ -44,13 +49,13 @@ class Roles
     private $updatedAt;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Stride\Core\Entity\Users", mappedBy="role_id")
+     * @ORM\ManyToMany(targetEntity="App\Entity\User\User", inversedBy="roles")
      */
-    private $users;
+    private $role_id;
 
     public function __construct()
     {
-        $this->users = new ArrayCollection();
+        $this->role_id = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -66,6 +71,18 @@ class Roles
     public function setCode(string $code): self
     {
         $this->code = $code;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
 
         return $this;
     }
@@ -119,28 +136,26 @@ class Roles
     }
 
     /**
-     * @return Collection|Users[]
+     * @return Collection|User[]
      */
-    public function getUsers(): Collection
+    public function getRoleId(): Collection
     {
-        return $this->users;
+        return $this->role_id;
     }
 
-    public function addUser(Users $user): self
+    public function addRoleId(User $roleId): self
     {
-        if (!$this->users->contains($user)) {
-            $this->users[] = $user;
-            $user->addRoleId($this);
+        if (!$this->role_id->contains($roleId)) {
+            $this->role_id[] = $roleId;
         }
 
         return $this;
     }
 
-    public function removeUser(Users $user): self
+    public function removeRoleId(User $roleId): self
     {
-        if ($this->users->contains($user)) {
-            $this->users->removeElement($user);
-            $user->removeRoleId($this);
+        if ($this->role_id->contains($roleId)) {
+            $this->role_id->removeElement($roleId);
         }
 
         return $this;

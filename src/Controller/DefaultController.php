@@ -16,8 +16,6 @@ class DefaultController extends AbstractController
     }
     public function userLogin()
     {
-        return $this->render('default/login.html.twig', [
-            'controller_name' => 'DefaultController',
-        ]);
+        
     }
 }

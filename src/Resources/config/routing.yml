@@ -1,0 +1,8 @@
+stride_dashboard:
+   path: /
+   controller: App\Controller\DefaultController::index
+
+# security routes
+security_routes:
+   resource: './security/security.yml'
+   # controller: App\Controller\DefaultController::userLogin

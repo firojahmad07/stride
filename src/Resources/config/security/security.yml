@@ -1,0 +1,14 @@
+# login path
+user_login:
+  path: /user/login
+  controller: App\Controller\Security\SecurityController::userLogin
+
+forgot_password:
+  path: /forgot/passord
+  controller: App\Controller\Security\SecurityController::forgotPassword
+  
+user_logout:
+  path: /logout
+  controller: App\Controller\Security\SecurityController::userLogout
+  
+
