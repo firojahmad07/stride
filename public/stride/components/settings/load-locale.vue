@@ -11,7 +11,7 @@
               <tr>
                 <th>Code</th>
                 <th>Status</th>
-					 <th>Action</th>	
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -46,33 +46,7 @@
 	</div>
 </template>
 <script>
-import axios from "axios";
-import endPoints from "../../apiClient"; 
-
 export default {
-  data: function() {
-    return {
-      limit: "10",
-      page: "1",
-      search: "",      
-    }
-  },
-  created: function() {
-    let requestParams = {
-      options: {
-          limit: this.limit,
-          page: this.page,
-          search: this.search,
-        }
-      }
-      axios.get(endPoints.STRIDE_LOAD_CURRENCY, 
-        { params: requestParams})
-        .then(response => {
-        console.log('response : ',response);
-        }).catch(error =>  {
-        console.log('error : ',error);
-      });
-    
-  }
+
 }
 </script>

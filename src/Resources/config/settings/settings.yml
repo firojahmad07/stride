@@ -1,0 +1,4 @@
+# currency routes
+stride_get_currencies:
+  path: /get-currencies
+  controller: stride_setting_controller::getCurrencies

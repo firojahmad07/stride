@@ -1,0 +1,9 @@
+parameters:
+  stride.searchable.currency.repository: 'App\Repository\SearchRepositories\CurrencySearchableRepository'
+
+services:
+  public: true
+  class: '%stride.searchable.currency.repository%',
+  arguments:
+    - '@doctrine.orm.entity_manager'
+    - '%stride.searchable.repository%'

@@ -1,0 +1,13 @@
+import:
+  - { resource: './Repository/entity.yaml' }
+  - { resource: './SearchableRepository/repository.yaml' }
+
+parameters:
+  setting.controller: 'App\Controller\Setting\SettingController'
+
+services:
+  stride_setting_controller:
+    public: true
+    class: '%setting.controller%'
+    arguments:
+      - '@doctrine.orm.entity_manager'

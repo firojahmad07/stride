@@ -1,7 +1,7 @@
 <template>
      <div class="az-iconbar-aside">
       <div class="az-iconbar-header">
-        <a href="/" class="az-logo">az<span>i</span>a</a>
+        <a href="/" class="az-logo">Str<span>i</span>de</a>
         <a href="#" class="az-iconbar-toggle-menu">
           <i class="typcn typcn-arrow-left-outline" v-on:click="closeSideBar"></i>
           <i class="icon ion-md-close"></i>
@@ -25,9 +25,9 @@
             <a href="map-vector.html" class="nav-link">Categories</a>
             <a href="map-vector.html" class="nav-link">Families</a>
             <a href="map-vector.html" class="nav-link">Association Types</a>
-            <a href="map-vector.html" class="nav-link">Currencies</a>
+            <router-link to = "/currencies" tag = "a" class="nav-link">Currencies</router-link>
             <a href="map-vector.html" class="nav-link">Locales</a>
-            <a href="map-vector.html" class="nav-link">Channels</a>
+            <a href="map-vector." class="nav-link">Channels</a>
           </nav>
         </div><!-- az-iconbar-pane -->
         <div id="asideSystem" class="az-iconbar-pane">
