@@ -1,2 +1,0 @@
-parameters:
-  stride.searchable.repository: App\Repository\SearchRepositories\CurrencySearchableRepository

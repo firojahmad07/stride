@@ -2,6 +2,10 @@
 	<div class = "az-content az-content-dashboard-six">
 		<header-menu></header-menu>
 		<div class="az-content-body az-content-body-dashboard-six">
+        <div class="az-content-breadcrumb">
+            <span>Settings</span>
+            <span>Currencies</span>
+        </div>
         <div class="az-content-label mg-b-5">
           <input type="text" class="form-control search-user" placeholder="Find Roles By Code" name="user">
         </div>
@@ -15,33 +19,16 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>System Architect</td>
+              <tr v-for="currency in currencies" :key="currency.id">
+                <th scope="row">{{ currency.id }}</th>
+                <td>{{ currency.code }} ({{ currency.countryName }})</td>
                 <td>
-                  <i class="typcn typcn-trash"></i>
-                </td>
-              </tr>
-				  <tr>
-                <th scope="row">1</th>
-                <td>System Architect</td>
-                <td>
-                  <i class="typcn typcn-trash"></i>
+                  <div class="az-toggle"><span></span></div>
                 </td>
               </tr>
             </tbody>
           </table>
         </div><!-- table-responsive -->
-        
-          <div class="mg-lg-b-30 pagination-wrapper">
-            <ul class="pagination pagination-circled">
-                <li class="page-item"><a class="page-link" href="#"><i class="typcn typcn-chevron-left-outline"></i></a></li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#"><i class="typcn typcn-chevron-right-outline"></i></a></li>
-              </ul>
-          </div>
       </div><!-- az-content-body -->
 	</div>
 </template>
@@ -54,7 +41,8 @@ export default {
     return {
       limit: "10",
       page: "1",
-      search: "",      
+      search: "",  
+      currencies: []  
     }
   },
   created: function() {
@@ -68,7 +56,9 @@ export default {
       axios.get(endPoints.STRIDE_LOAD_CURRENCY, 
         { params: requestParams})
         .then(response => {
-        console.log('response : ',response);
+          if(200 === response.status) {
+            this.currencies = response.data;
+          }
         }).catch(error =>  {
         console.log('error : ',error);
       });

@@ -1,0 +1,20 @@
+# currency routes
+stride_get_currencies:
+  path: /get-currencies
+  controller: stride_setting_controller::getCurrencies
+
+stride_get_locales:
+  path: /get-locales
+  controller: stride_setting_controller::getLocales
+
+stride_get_attribute_groups:
+  path: /get-attribute-groups
+  controller: stride_setting_controller:getAttributeGroups
+
+stride_get_attribute_group:
+  path: /get-attribute-group
+  controller: stride_setting_controller:getAttributeGroup
+  
+stride_create_attribute_group:
+  path: /create-attribute-group
+  controller: stride_setting_controller::createAttributeGroup

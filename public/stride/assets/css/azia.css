@@ -9947,7 +9947,7 @@ textarea.parsley-success:focus {
     display: block; } }
 
 .az-iconbar {
-  width: 64px;
+  width: 80px;
   display: none;
   flex-direction: column;
   align-items: center;
@@ -9968,14 +9968,12 @@ textarea.parsley-success:focus {
     align-items: center;
     padding: 5px 0; }
   .az-iconbar .nav-link {
-    position: relative;
     padding: 0;
     color: #494c57;
     width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center; }
+    height: 55px;
+    text-align: center;
+   }
     .az-iconbar .nav-link i {
       font-size: 28px; }
       .az-iconbar .nav-link i.typcn {

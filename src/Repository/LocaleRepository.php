@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Locale;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\EntityRepository;
 
 /**
  * @method Locale|null find($id, $lockMode = null, $lockVersion = null)
@@ -12,12 +13,12 @@ use Doctrine\Common\Persistence\ManagerRegistry;
  * @method Locale[]    findAll()
  * @method Locale[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class LocaleRepository extends ServiceEntityRepository
+class LocaleRepository extends EntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
-    {
-        parent::__construct($registry, Locale::class);
-    }
+    // public function __construct(ManagerRegistry $registry)
+    // {
+    //     parent::__construct($registry, Locale::class);
+    // }
 
     // /**
     //  * @return Locale[] Returns an array of Locale objects

@@ -20,14 +20,14 @@
           <h6 class="az-iconbar-title">Settings</h6>
           <small class="az-iconbar-text">Settings Navigation.</small>
           <nav class="nav">
-            <a href="map-google.html" class="nav-link">Attributes</a>
-            <a href="map-leaflet.html" class="nav-link">Attribute Groups</a>
-            <a href="map-vector.html" class="nav-link">Categories</a>
-            <a href="map-vector.html" class="nav-link">Families</a>
-            <a href="map-vector.html" class="nav-link">Association Types</a>
+            <a href="#" class="nav-link">Attributes</a>
+            <router-link to ="/attribute-groups" tag ="a" class="nav-link">Attribute Groups</router-link>
+            <a href="#" class="nav-link">Categories</a>
+            <a href="#" class="nav-link">Families</a>
+            <a href="#" class="nav-link">Association Types</a>
             <router-link to = "/currencies" tag = "a" class="nav-link">Currencies</router-link>
-            <a href="map-vector.html" class="nav-link">Locales</a>
-            <a href="map-vector." class="nav-link">Channels</a>
+            <router-link to = "/locales" tag = "a" class="nav-link">Locales</router-link>
+            <a href="" class="nav-link">Channels</a>
           </nav>
         </div><!-- az-iconbar-pane -->
         <div id="asideSystem" class="az-iconbar-pane">

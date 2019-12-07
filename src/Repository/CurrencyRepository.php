@@ -5,19 +5,14 @@ namespace App\Repository;
 use App\Entity\Currency;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\EntityRepository;
 
-/**
- * @method Currency|null find($id, $lockMode = null, $lockVersion = null)
- * @method Currency|null findOneBy(array $criteria, array $orderBy = null)
- * @method Currency[]    findAll()
- * @method Currency[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
- */
-class CurrencyRepository extends ServiceEntityRepository
+class CurrencyRepository extends EntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
-    {
-        parent::__construct($registry, Currency::class);
-    }
+    // public function __construct(ManagerRegistry $registry)
+    // {
+    //     parent::__construct($registry, Currency::class);
+    // }
 
     // /**
     //  * @return Currency[] Returns an array of Currency objects

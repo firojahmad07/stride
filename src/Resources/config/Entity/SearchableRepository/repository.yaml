@@ -1,0 +1,20 @@
+# parameters:
+#   stride.searchable.currency.repository: 'App\Repository\SearchRepositories\CurrencySearchableRepository'
+
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  stride.searchable.currency.service:
+    autowire: true
+    class: '%stride.searchable.currency.repository%'
+    public: false
+    arguments:
+      - '@doctrine.orm.entity_manager'
+    #   - '%stride.entity.currency%'
+
+  # stride.searchable.currency.service:
+  #   alias: App\Repository\SearchRepositories\CurrencySearchableRepository
+  #   public: true

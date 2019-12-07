@@ -1,0 +1,3 @@
+parameters:
+    stride.searchable.currency.repository: App\Repository\SearchRepositories\CurrencySearchableRepository
+    stride.entity.currency: App\Entity\Currency

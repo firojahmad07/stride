@@ -3,8 +3,8 @@ stride_dashboard:
    controller: App\Controller\DefaultController::index
 
 # security routes
-security_routes:
-   resource: './security/security.yml'
+stride_security_routes:
+   resource: './Routes/Security/Security.yml'
 
-setting_routes:
-   resource: './settings/settings.yml'
+stride_setting_routes:
+   resource: './Routes/Settings/Settings.yml'

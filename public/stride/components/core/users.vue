@@ -63,8 +63,8 @@
                 </button>
               </div>
               <div class="modal-body">
-                <!-- <form id="create-user-form" action="/create-user" method="post"
-                    @submit="addUser" data-parsley-validate novalidate>
+                <form id="create-user-form" action="/create-user" method="post"
+                    @submit-prevent="addUser" data-parsley-validate novalidate>
                   <div class="wd-sm-300">
                     <div class="d-md-flex mg-b-20">
                       <div class="form-group mg-b-0">
@@ -100,10 +100,8 @@
                           <input type="password" name="lastname" v-model="user.cPassword" class="form-control wd-350" placeholder="Enter Password Again" required>
                         </div>
                       </div>
-
-
                   </div>
-                </form> -->
+                </form>
               </div><!-- modal-body -->
               <div class="modal-footer">
                 <button type="button" class="btn btn-indigo">Save changes</button>

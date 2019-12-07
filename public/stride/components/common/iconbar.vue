@@ -2,19 +2,21 @@
     <div class="az-iconbar">
       <a href="/" class="az-iconbar-logo"><i class="typcn typcn-chart-bar-outline"></i></a>
       <nav class="nav">
-        <a href="#asideUIElements" class="nav-link" v-on:click="openSidebar"><i class="typcn typcn-book"></i></a>
-        <a href="#" class="nav-link" ><i class="typcn typcn-folder-add"></i></a>
-        <a href="#asideSettings" class="nav-link" v-on:click="openSidebar"><i class="typcn typcn-map"></i></a>
-        <a href="#asideSystem" class="nav-link" v-on:click="openSidebar"><i class="typcn typcn-th-large-outline"></i></a>
+        <a v-for="iconBar in iconBars" :key="iconBar.label"
+           :href="iconBar.link" :class="iconBar.class" v-on:click="openSidebar">
+          <i :class="iconBar.icon"></i> 
+          <span class="iconLabel">{{ iconBar.label }}</span>
+        </a>
       </nav>
     </div><!-- az-iconbar -->
 </template>
 <script>
   export default {
     name: "iconbar",
-    data: function(){
-      return {
-      };
+    props: {
+      iconBars:{
+        type: Array
+      }
     },
     methods: {
         openSidebar: function(e) {
@@ -29,9 +31,10 @@
 
         }
     },
-    created() {
-        // initialize function insides
-        // this.initIcanBar();
-    },
   }
 </script>
+<style scoped>
+  .iconLabel {
+    color:#494c56;
+  }
+</style>

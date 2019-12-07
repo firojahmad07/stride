@@ -8,6 +8,8 @@ import addRole from "../components/core/add-role.vue"
 import roles from "../components/core/roles.vue"
 
 import currenyRoutes from  "../routers/settings/currency";
+import LocaleRoutes from  "../routers/settings/locale";
+import attributeAndAttributeGroups from "../routers/settings/attribute-and-attribute-groups";
 // settings routes
 var settingsRoutes = [
     { path: "/", name: "dashboard", component: dashboard },
@@ -17,7 +19,8 @@ var settingsRoutes = [
     { path: "/add-role", name: "add-role", component: addRole }
 ];
 var allRoutes = [];
-const dashboardRouts = allRoutes.concat(settingsRoutes, currenyRoutes);
+const dashboardRouts = allRoutes.concat(settingsRoutes, 
+    currenyRoutes, LocaleRoutes, attributeAndAttributeGroups);
 export  default new router({
     routes: dashboardRouts
 });
