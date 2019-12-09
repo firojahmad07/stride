@@ -6,5 +6,8 @@ stride_dashboard:
 stride_security_routes:
    resource: './Routes/Security/Security.yml'
 
+stride_system_routes:
+   resource: './Routes/System/System.yml'
+
 stride_setting_routes:
    resource: './Routes/Settings/Settings.yml'

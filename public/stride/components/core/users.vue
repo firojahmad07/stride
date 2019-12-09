@@ -25,18 +25,18 @@
               </tr>
             </thead>
             <tbody>
-              <!-- <tr v-for="user in users" :key="user.id">
+              <tr v-for="user in userList" :key="user.id">
                 <th scope="row"> {{ user.id }}</th>
                 <td> {{ user.firstName }} </td>
                 <td> {{ user.lastName }} </td>
                 <td> {{ user.email }} </td>
                 <td>
                   <div class="btn-icon-list">
-                    <button class="btn btn-md btn-indigo btn-icon"><i class="typcn typcn-edit"></i></button>
-                    <button class="btn btn-md btn-danger btn-icon"><i class="typcn typcn-trash"></i></button>                 
+                      <i class="typcn typcn-edit"></i>
+                      <i class="typcn typcn-trash"></i>
                   </div>
                 </td>
-              </tr> -->
+              </tr>
             </tbody>
           </table>
         </div><!-- table-responsive -->
@@ -62,50 +62,54 @@
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div class="modal-body">
-                <form id="create-user-form" action="/create-user" method="post"
-                    @submit-prevent="addUser" data-parsley-validate novalidate>
-                  <div class="wd-sm-300">
-                    <div class="d-md-flex mg-b-20">
-                      <div class="form-group mg-b-0">
-                        <label class="form-label">Firstname: <span class="tx-danger">*</span></label>
-                        <input type="text" name="firstname" v-model="user.firstName" class="form-control wd-350"
-                          data-parsley-maxlength="40" placeholder="Enter firstname" required>
-                      </div>
-                      <div class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0">
-                        <label class="form-label">Lastname: <span class="tx-danger">*</span></label>
-                        <input type="text" name="lastname" v-model="user.lastName" class="form-control wd-350"
-                          data-parsley-maxlength="40" placeholder="Enter lastname" required>
-                      </div>
-                    </div>
-
-                    <div class="d-md-flex mg-b-20">
+              <form id="create-user-form" data-parsley-validate>
+                <div class="modal-body">
+                    <div class="wd-sm-300" id="create-user-form">
+                      <div class="d-md-flex mg-b-20">
                         <div class="form-group mg-b-0">
-                          <label class="form-label">User Name: <span class="tx-danger">*</span></label>
-                          <input type="text" name="firstname" v-model="user.userName" class="form-control wd-350" placeholder="Enter User Name" required>
+                          <label class="form-label">Firstname: <span class="tx-danger">*</span></label>
+                          <input type="text" name="firstname" v-model="user.firstName" class="form-control wd-350"
+                            data-parsley-maxlength="40" placeholder="Enter firstname" required>
                         </div>
                         <div class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0">
-                          <label class="form-label">Email: <span class="tx-danger">*</span></label>
-                          <input type="text" name="lastname" v-model="user.email" class="form-control wd-350" placeholder="Enter Email" required>
-                        </div>
-                    </div>
-
-                     <div class="d-md-flex mg-b-20">
-                        <div class="form-group mg-b-0">
-                          <label class="form-label">Password: <span class="tx-danger">*</span></label>
-                          <input type="Password" name="firstname" v-model="user.password" class="form-control wd-350" placeholder="Enter Password" required>
-                        </div>
-                        <div class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0">
-                          <label class="form-label">Confirm Password: <span class="tx-danger">*</span></label>
-                          <input type="password" name="lastname" v-model="user.cPassword" class="form-control wd-350" placeholder="Enter Password Again" required>
+                          <label class="form-label">Lastname: <span class="tx-danger">*</span></label>
+                          <input type="text" name="lastname" v-model="user.lastName" class="form-control wd-350"
+                            data-parsley-maxlength="40" placeholder="Enter lastname" required>
                         </div>
                       </div>
-                  </div>
-                </form>
-              </div><!-- modal-body -->
-              <div class="modal-footer">
-                <button type="button" class="btn btn-indigo">Save changes</button>
-              </div>
+
+                      <div class="d-md-flex mg-b-20">
+                          <div class="form-group mg-b-0">
+                            <label class="form-label">User Name: <span class="tx-danger">*</span></label>
+                            <input type="text" name="userName" v-model="user.userName" class="form-control wd-350"
+                             placeholder="Enter User Name" required>
+                          </div>
+                          <div class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0">
+                            <label class="form-label">Email: <span class="tx-danger">*</span></label>
+                            <input type="text" name="email" v-model="user.email" 
+                            class="form-control wd-350" placeholder="Enter Email" required>
+                          </div>
+                      </div>
+
+                      <div class="d-md-flex mg-b-20">
+                          <div class="form-group mg-b-0">
+                            <label class="form-label">Password: <span class="tx-danger">*</span></label>
+                            <input type="Password" id="password"  name="password" v-model="user.password" 
+                            class="form-control wd-350" placeholder="Enter Password" required>
+                          </div>
+                          <div class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0">
+                            <label class="form-label">Confirm Password: <span class="tx-danger">*</span></label>
+                            <input type="password" name="cpassword" v-model="user.cPassword" 
+                            class="form-control wd-350" placeholder="Enter Password Again"                            
+                            data-parsley-equalto="#password" required>
+                          </div>
+                        </div>
+                    </div>
+                </div><!-- modal-body -->
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-indigo" @click="addUser">Save changes</button>
+                </div>
+              </form>
             </div>
           </div><!-- modal-dialog -->
         </div><!-- modal -->
@@ -114,32 +118,49 @@
 
 <script>
   import { mapState, mapActions, mapMutations, mapGetters } from 'vuex';
-
+  import parsley from "parsleyjs";
+  import axios from "axios";
+  import endPoints from "../../apiClient";
+  // import parsley from "parsleyjs";
   export default {
-    mounted: {
-      ...mapMutations('userModule', ['getUsers']),
-      // console.log('users vue mounted');      
-    },
-    computed: {
-      ...mapState("userModule", { loadUsers: "users"}),
+    data() {
+      return {
+        userList: [],
+        user : {
+          firstName: '',
+          lastName: '',
+          email: '',
+          userName: '',
+          password: ''
+        }
+      }
     },
     created(){
-      this.initForm();
+      this.loadList();
     },
     
     methods: {
-      loadUsers (users) {
-        console.log('user data: ', users);
-      },
-      addUser:function(e){
-        e.preventDefault();
-        console.log('user data : ', this.user);
-      },
-        initForm: function(){
-          console.log('onload');
-          console.log(this.$store.state.testMessage);
-          $('#create-user-form').parsley();
+      addUser:function(e) {
+        e.preventDefault(false);
+        var userForm = $('#create-user-form').parsley();
+        if(userForm.isValid()) {
+          axios.post(endPoints.STRIDE_ADD_USER, this.user).then(response => {
+            $('#modaldemo3').hide();
+            this.loadList();
+          }).catch(error => {
+            console.log('error : ', error);
+          });
         }
+      },
+      loadList: function(){
+       axios.get(endPoints.STRIDE_GET_USERS).then(response => {
+         if(200 === response.status) {
+           this.userList = response.data;
+         }
+       }).catch(error => {
+         console.log(error);
+       });
+      }
     }
   }
 </script>

@@ -4,6 +4,7 @@ window.$ = $;
 window._ = _;
 
 import '../assets/css/azia.css';
+import '../assets/css/stride.css';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import  'bootstrap/dist/js/bootstrap.min.js';
 // import  'parsleyjs/dist/parsley.min.js';

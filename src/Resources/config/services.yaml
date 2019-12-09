@@ -4,12 +4,14 @@ imports:
 
 parameters:
    setting.controller: App\Controller\Setting\SettingController
+   stride.user.controller: App\Controller\System\UserController
 
 services:
    _defaults:
       autowire: true
       autoconfigure: true
       public: false
+
    stride_setting_controller:
       class: '%setting.controller%'
       autowire: true
@@ -21,3 +23,7 @@ services:
    # stride_setting_controller:
    #    alias: App\Controller\Setting\SettingController
    #    public: true
+   stride_user_controller:
+      class: '%stride.user.controller%'
+      autowire: true
+      public: true

@@ -1,0 +1,7 @@
+stride_add_user:
+  path: /stride/add-user
+  controller: stride_user_controller:addUser
+  
+stride_list_user:
+  path: /stride/user-list
+  controller: stride_user_controller:getUsers
