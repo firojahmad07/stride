@@ -32,8 +32,10 @@
                 <td> {{ user.email }} </td>
                 <td>
                   <div class="btn-icon-list">
-                      <i class="typcn typcn-edit"></i>
-                      <i class="typcn typcn-trash"></i>
+                    <router-link href="#" :to="{name:'edit-user',
+                      params:{userId: user.id}}"
+                      tag="a" class="typcn typcn-edit">
+                    </router-link>
                   </div>
                 </td>
               </tr>

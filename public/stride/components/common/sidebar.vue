@@ -20,11 +20,11 @@
           <h6 class="az-iconbar-title">Settings</h6>
           <small class="az-iconbar-text">Settings Navigation.</small>
           <nav class="nav">
-            <a href="#" class="nav-link">Attributes</a>
+            <router-link :to='{name: "list-attributes"}' tag='a' class='nav-link'>Attributes</router-link>
             <router-link to ="/attribute-groups" tag ="a" class="nav-link">Attribute Groups</router-link>
-            <a href="#" class="nav-link">Categories</a>
-            <a href="#" class="nav-link">Families</a>
-            <a href="#" class="nav-link">Association Types</a>
+            <router-link :to='{name: "list-categories"}' class='nav-link'>Categories</router-link>
+            <router-link :to='{name: "list-families"}' class='nav-link'>Families</router-link>
+            <router-link :to='{name: "list-association-types"}' class='nav-link'>Association Types</router-link>
             <router-link to = "/currencies" tag = "a" class="nav-link">Currencies</router-link>
             <router-link to = "/locales" tag = "a" class="nav-link">Locales</router-link>
             <a href="" class="nav-link">Channels</a>

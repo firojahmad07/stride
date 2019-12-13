@@ -12,8 +12,6 @@ import "./constants/globalComponents";
 import vueRouter from "vue-router";
 import store from "./store";
 import vue from "vue";
-// import select2 from "select2";
-// Vue.use()
 vue.use(vueRouter);
 // vue.use(select2);
 import routers from './routers';
