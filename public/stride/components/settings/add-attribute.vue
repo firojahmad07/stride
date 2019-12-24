@@ -29,12 +29,11 @@
                                             type="text" name="firstname" class="form-control wd-250" 
                                             :placeholder="attributeForm.placeholder" required>
 
-                                        <select class="select2" 
+                                        <select class="form-control wd-250 select2" 
                                             v-else-if="getValidType(attributeForm.types, 'stride_catalog_select')">
-                                            <option><i class="typcn typcn-cog-outline"></i> Text</option>
-                                            <option>Textarea</option>
-                                            <option>Select</option>
-                                            <option>Multi Select</option>
+                                            <option v-for='options in attributeForm.options' :key='options'
+                                            :value='options.code'> {{ options.label }} </option>
+        
                                             
                                         </select>
                                     </div><!-- form-group -->
@@ -45,7 +44,7 @@
                     </div><!-- general-->
                     <div id="attriubtes" class="tab-pane">
                          <div class="col-lg-4 mg-t-20 mg-lg-t-0">
-                            <select class="form-control select2">
+                            <select class="form-control select2 wd-250">
                                 <option label="Choose one"></option>
                                 <option value="Firefox">Firefox</option>
                                 <option value="Chrome">Chrome</option>
@@ -68,8 +67,7 @@
                             </table>
                         </div><!-- table-responsive -->
                     </div><!-- general-->
-                </div>
-               
+                </div>              
                
             </div><!-- az-content-body -->
         </div><!-- table-responsive -->      
@@ -81,19 +79,31 @@
 
 import axios from "axios";
 import endPoints from "../../apiClient";
-import select2 from "select2";
+// import select2 from "select2";
 
 export default {
-    data: function() {
+    data(){
        return { 
-           attributeGroupCode: this.$route.params.code,
-           isAttributes: false,
-           addAttributeForm : [
-               { label: "Label", types: ['stride_catalog_text'], placeholder: "Attribute Label", name:"label", required: true},
-               { label: "Code", types: ['stride_catalog_text'], placeholder: "Attribute code", name:"code", required: true},
-               { label: "Attribute Type", types: ['stride_catalog_select'], placeholder: "", name:"attribute_type", required: true},
-               { label: "Attribute Group", types: ['stride_catalog_select'], placeholder: "", name:"attribute_group", required: true}
+           attributeGroups: [],
+           attributeTypes : [
+               { code: "stride_catalog_text", label:"Text" },
+               { code: "stride_catalog_textarea", label:"Textarea" },
+               { code: "stride_catalog_select", label:"Select" },
+               { code: "stride_catalog_multiselect", label:"Multi select" },
+               { code: "stride_catalog_boolean", label:"Boolean" },
+               { code: "stride_catalog_price", label:"Price" },
+               { code: "stride_catalog_number", label:"Number" },
+               { code: "stride_catalog_image", label:"Image" },
            ],
+           attributeGroupOptios:{
+               options: {
+                   page: 1,
+                   limit: 10,
+                   search: ''
+               }
+           },
+           isAttributes: false,
+           addAttributeForm : [],
            attributeGroup: {
                code:'',
                label:'',
@@ -101,15 +111,22 @@ export default {
            }
         }
     },
-    mounted() {
+    mounted(){
+        console.log('mounted ', this.attributeTypes);
+
+    },
+    created() {
+        // this.getAttributeGroup();
+        // console.log(this.attributeGroup);
+        this.addAttributeForm = this.getAttributeForm();
+        console.log('created ', this.attributeTypes);
         $('.select2').select2({
-            placeholder: 'Choose one'
-          });
-        console.log('kkkkk', $('.select2'));
-        this.isAttributes = _.isUndefined(this.attributeGroupCode) ? false : true;
-        if(!_.isUndefined(this.attributeGroupCode)) {
-            this.getAttributeGroup();
-        }
+            placeholder: 'Select'
+        });
+        // this.isAttributes = _.isUndefined(this.attributeGroupCode) ? false : true;
+        // if(!_.isUndefined(this.attributeGroupCode)) {
+        //     this.getAttributeGroup();
+        // }
     },
     methods: {
        createAttributeGroup() {
@@ -128,17 +145,34 @@ export default {
            return (-1 !== _.indexOf(types, index)) ? true : false;
        },
        getAttributeGroup() {
-            console.log(this.attributeGroup);
-
-            axios.get(endPoints.STRIDE_GET_ATTRIBUTE_GROUP, { params: {attributeGroupCode: this.attributeGroupCode }}).then(response =>{
-                console.log(response, this.attributeGroup);
-                this.attributeGroup = response.data;
-            //    if(200 === response.code) {
-            //        console.log(this.attributeGroup);
-            //    }
-           }).catch(error => {
-               console.log(error);
-           });
+           axios.get(endPoints.STRIDE_LOAD_ATTRIBUTE_GROUPS, { params: this.attributeGroupOptios } )
+                        .then(response => {
+                            console.log('resp : ', response.data);
+                            this.attributeGroups = response.data;
+                }).catch(error => {
+                    console.log(error);
+                });
+       },
+       getAttributeForm() {
+           var  attributeTypes = [
+               { code: "stride_catalog_text", label:"Text" },
+               { code: "stride_catalog_textarea", label:"Textarea" },
+               { code: "stride_catalog_select", label:"Select" },
+               { code: "stride_catalog_multiselect", label:"Multi select" },
+               { code: "stride_catalog_boolean", label:"Boolean" },
+               { code: "stride_catalog_price", label:"Price" },
+               { code: "stride_catalog_number", label:"Number" },
+               { code: "stride_catalog_image", label:"Image" },
+           ];
+           console.log('attributeGroups : ', this.attributeGroups);
+          return [  { label: "Label", types: ['stride_catalog_text'], placeholder: "Attribute Label",
+                      name:"label", required: true},
+                    { label: "Code", types: ['stride_catalog_text'], placeholder: "Attribute code", name:"code", required: true},
+                    { label: "Attribute Type", types: ['stride_catalog_select'], placeholder: "", 
+                    name:"attribute_type", required: true, options: attributeTypes },
+                    { label: "Attribute Group", types: ['stride_catalog_select'], placeholder: "", 
+                    name:"attribute_group", options: this.attributeGroups, required: true}
+           ];
        }
     }
 }

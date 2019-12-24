@@ -97,21 +97,23 @@ class SettingController extends AbstractController
     }
     public function getAttributeGroups(Request $request)
     {
-        $currencyResult = [];
+        $attributeGroupResult = [];
         if($optionParams = json_decode($request->get('options'), true)) {
             $limit  = $optionParams['limit'];
             $page   = $optionParams['page'];
             $offset = ($page-1) * $limit;
+
             $currencyRepo = $this->entityManager->getRepository(AttributeGroups::class);
             $currencyQB   = $currencyRepo->createQueryBuilder('a')
-                            ->select('a.id, a.code')
+                            ->select('a.id, a.code, a.label as extra')
                             ->setMaxResults($limit)
                             ->setFirstResult($offset);
 
-            $currencyResult = $currencyQB->getQuery()->getResult();
+            $attributeGroupResult = $currencyQB->getQuery()->getResult();
 
         }
-        return new JsonResponse($currencyResult);
+        $attributeGroupResult = $this->formateAttributeGroup($attributeGroupResult);
+        return new JsonResponse($attributeGroupResult);
     }
     public function getAttributeGroup(Request $request)
     {
@@ -127,6 +129,22 @@ class SettingController extends AbstractController
 
         return new JsonResponse($responseData);
         // $currencyResult = $currencyQB->getQuery()->getResult();
+    }
+    
+    public function formateAttributeGroup($attrGroups)
+    {
+        $data = [];
+
+        if(!empty($attrGroups)) {
+            foreach($attrGroups as $attrGroup) {
+                $data[] = [
+                    'code' => $attrGroup['code'],
+                    'label' => $attrGroup['extra']['label'],
+                ];
+            }
+        }
+
+        return $data;
     }
     // public function generatePagination($page)
     // {
